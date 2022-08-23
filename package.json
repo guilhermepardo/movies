@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node node_modules/nodemon/bin/nodemon src/server", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/guilhermepardo/movies/issues"
   },
-  "homepage": "https://github.com/guilhermepardo/movies#readme"
+  "homepage": "https://github.com/guilhermepardo/movies#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
 }
