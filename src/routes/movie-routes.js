@@ -1,7 +1,5 @@
+const trendingFactory = require('../features/trending/trending-factory')
+
 module.exports = (router) => {
-    router.get('/test', (req, res) => {
-        res.send({
-            test: 'test'
-        })
-    })
+    router.get('/trending/movies', (req, res) => {trendingFactory.handle(req, res)})
 }
