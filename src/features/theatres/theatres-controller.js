@@ -1,11 +1,11 @@
-module.exports = class PopularController {
-    constructor(popularService) {
-        this.popularService = popularService
+module.exports = class TheatresController {
+    constructor(theatresService) {
+        this.theatresService = theatresService
     }
 
     async handle(req, res) {
         try {
-            const response = await this.popularService.popular()
+            const response = await this.theatresService.theatres()
             res.send(response)
         } catch (error) {
             console.log('error :>>', error)

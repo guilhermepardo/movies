@@ -1,6 +1,4 @@
-const genreConversor = require('../../general/feature-helpers/genre-helper')
-
-module.exports = class popularService {
+module.exports = class PopularService {
     constructor(apiKey, httpHelper, generalHelper) {
         this.apiKey = apiKey
         this.httpHelper = httpHelper,
