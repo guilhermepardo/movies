@@ -1,4 +1,4 @@
-module.exports = class TrendingHelper {
+module.exports = class PopularHelper {
     constructor(genreHelper) {
         this.genreHelper = genreHelper
     }
