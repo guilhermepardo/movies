@@ -1,8 +1,8 @@
 module.exports = class PopularService {
-    constructor(apiKey, httpHelper, generalHelper) {
+    constructor(apiKey, httpHelper, popularHelper) {
         this.apiKey = apiKey
         this.httpHelper = httpHelper,
-        this.generalHelper = generalHelper
+        this.popularHelper = popularHelper
     }
 
     async popular() {
@@ -14,7 +14,7 @@ module.exports = class PopularService {
                 title: movie.title,
                 originalTitle: movie.original_title,
                 sinopsis: movie.overview,
-                genres: this.generalHelper.genreConversor(movie.genre_ids),
+                genres: this.popularHelper.genreConversor(movie.genre_ids),
                 release: movie.release_date,
                 language: movie.original_language,
                 adult: movie.adult,

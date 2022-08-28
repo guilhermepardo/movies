@@ -1,8 +1,8 @@
 module.exports = class TrendingService {
-    constructor(apiKey, httpHelper, generalHelper) {
+    constructor(apiKey, httpHelper, trendingHelper) {
         this.apiKey = apiKey
         this.httpHelper = httpHelper,
-        this.generalHelper = generalHelper
+        this.trendingHelper = trendingHelper
     }
 
     async trending() {
@@ -14,7 +14,7 @@ module.exports = class TrendingService {
                 title: movie.title,
                 originalTitle: movie.original_title,
                 sinopsis: movie.overview,
-                genres: this.generalHelper.genreConversor(movie.genre_ids),
+                genres: this.trendingHelper.genreConversor(movie.genre_ids),
                 release: movie.release_date,
                 language: movie.original_language,
                 adult: movie.adult

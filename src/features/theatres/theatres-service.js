@@ -1,8 +1,8 @@
 module.exports = class TheatresService {
-    constructor(apiKey, httpHelper, generalHelper) {
+    constructor(apiKey, httpHelper, theatresHelper) {
         this.apiKey = apiKey
         this.httpHelper = httpHelper,
-        this.generalHelper = generalHelper
+        this.theatresHelper = theatresHelper
     }
 
     async theatres() {
@@ -14,7 +14,7 @@ module.exports = class TheatresService {
                 title: movie.title,
                 originalTitle: movie.original_title,
                 sinopsis: movie.overview,
-                genres: this.generalHelper.genreConversor(movie.genre_ids),
+                genres: this.theatresHelper.genreConversor(movie.genre_ids),
                 release: movie.release_date,
                 language: movie.original_language,
                 adult: movie.adult,
