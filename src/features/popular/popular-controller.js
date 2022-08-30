@@ -3,7 +3,7 @@ module.exports = class PopularController {
         this.popularService = popularService
     }
 
-    async handle(req, res) {
+    async popular(req, res) {
         try {
             const response = await this.popularService.popular()
             res.send(response)
