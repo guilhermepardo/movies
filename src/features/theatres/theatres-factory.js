@@ -1,12 +1,12 @@
 const TheatresService = require('./theatres-service')
 const TheatresController = require('./theatres-controller')
-const HttpHelper = require('../../general/http-helper')
+const HttpHandler = require('../../general/protocols/http-handler')
 const genreHelper = require('../../general/feature-helpers/genre-helper')
 const TheatresHelper = require('./theatres-helper')
 
-const httpHelper = new HttpHelper()
+const httpHandler = new HttpHandler()
 const theatresHelper = new TheatresHelper(genreHelper)
-const theatresService = new TheatresService(process.env.TMDB_V3_KEY, httpHelper, theatresHelper)
+const theatresService = new TheatresService(process.env.TMDB_V3_KEY, httpHandler, theatresHelper)
 const theatresFactory = new TheatresController(theatresService)
 
 module.exports = theatresFactory 

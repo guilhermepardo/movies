@@ -1,12 +1,12 @@
 const TrendingService = require('./trending-service')
 const TrendingController = require('./trending-controller')
-const HttpHelper = require('../../general/http-helper')
+const HttpHandler = require('../../general/protocols/http-handler')
 const genreHelper = require('../../general/feature-helpers/genre-helper')
 const TrendingHelper = require('./trending-helper')
 
-const httpHelper = new HttpHelper()
+const httpHandler = new HttpHandler()
 const trendingHelper = new TrendingHelper(genreHelper)
-const trendingService = new TrendingService(process.env.TMDB_V3_KEY, httpHelper, trendingHelper)
+const trendingService = new TrendingService(process.env.TMDB_V3_KEY, httpHandler, trendingHelper)
 const trendingFactory = new TrendingController(trendingService)
 
 module.exports = trendingFactory 

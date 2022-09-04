@@ -1,13 +1,14 @@
-const genres = require('../store/genres')
+const genresList = require('../store/genres')
 
 module.exports = (movieGenres) => {
-    let convertedGenres = []
-    movieGenres.map(genre => {
-        genres.map(index => {
-            if (index.id === genre) {
-                convertedGenres.push(index.name)
+    let genresNames = []
+    movieGenres.map(genreNumber => {
+        genresList.map(genreIndex => {
+            const index = genreNumber.id ? genreNumber.id : genreNumber
+            if (genreIndex.id === index) {
+                genresNames.push(genreIndex.name)
             }
         })
     })
-    return convertedGenres
+    return genresNames
 }
