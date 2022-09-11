@@ -1,25 +1,25 @@
 module.exports = class TheatresService {
-    constructor(apiKey, httpHelper, theatresHelper) {
-        this.apiKey = apiKey
-        this.httpHelper = httpHelper,
-        this.theatresHelper = theatresHelper
+    constructor(httpHandler, helper) {
+        this.httpHandler = httpHandler,
+        this.helper = helper
     }
 
     async current() {
         try {
             let list = []
-            const response = await this.httpHelper.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}`)
+            const response = await this.httpHandler.get(this.helper.getTmdbFeatureUrlComposed('THEATRES'))
             response.results.map(movie => {
                 list.push({
-                title: movie.title,
-                originalTitle: movie.original_title,
-                sinopsis: movie.overview,
-                genres: this.theatresHelper.genreConversor(movie.genre_ids),
-                release: movie.release_date,
-                language: movie.original_language,
-                adult: movie.adult,
-                rating: movie.vote_average,
-                popularity: movie.popularity
+                title: movie['title'],
+                originalTitle: movie['original_title'],
+                sinopsis: movie['overview'],
+                posterImage: this.helper.getTmdbImageUrlComposed(movie['poster_path']),
+                genres: this.helper.genreConversor(movie['genre_ids']),
+                release: movie['release_date'],
+                language: movie['original_language'],
+                adult: movie['adult'],
+                rating: movie['vote_average'],
+                popularity: movie['popularity']
                 })
             })
             return list
@@ -31,18 +31,19 @@ module.exports = class TheatresService {
     async upcoming() {
         try {
             let list = []
-            const response = await this.httpHelper.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiKey}`)
+            const response = await this.httpHandler.get(this.helper.getTmdbFeatureUrlComposed('THEATRES_UPCOMING'))
             response.results.map(movie => {
                 list.push({
-                title: movie.title,
-                originalTitle: movie.original_title,
-                sinopsis: movie.overview,
-                genres: this.theatresHelper.genreConversor(movie.genre_ids),
-                release: movie.release_date,
-                language: movie.original_language,
-                adult: movie.adult,
-                rating: movie.vote_average,
-                popularity: movie.popularity
+                title: movie['title'],
+                originalTitle: movie['original_title'],
+                sinopsis: movie['overview'],
+                posterImage: this.helper.getTmdbImageUrlComposed(movie['poster_path']),
+                genres: this.helper.genreConversor(movie['genre_ids']),
+                release: movie['release_date'],
+                language: movie['original_language'],
+                adult: movie['adult'],
+                rating: movie['vote_average'],
+                popularity: movie['popularity']
                 })
             })
             return list

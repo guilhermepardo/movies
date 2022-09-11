@@ -6,7 +6,7 @@ module.exports = class DetailedHelper {
     }
 
     genreConversor(genres) {
-        return this.genreHelper(genres)
+        return this.genreHelper.returnGenresList(genres)
     }
 
     getTmdbFeatureUrlComposed(feature) {
@@ -23,19 +23,19 @@ module.exports = class DetailedHelper {
 
     getSpokenLanguageList(list){
         let languagesList = []
-        list.map(language => {languagesList.push(language.name)})
+        list.map(language => {languagesList.push({name: language['name'], englishName: language['english_name']})})
         return languagesList
     }
 
     getCompaniesList(list){
         let companiesList = []
-        list.map(company => {companiesList.push({ name: company.name, country: company.origin_country})})
+        list.map(company => {companiesList.push({name: company['name'], country: company['origin_country'], logoImage: this.getTmdbImageUrlComposed(company['logo_path'])})})
         return companiesList
     }
 
     getCountriesList(list){
         let countriesList = []
-        list.map(country => {countriesList.push(country.name)})
+        list.map(country => {countriesList.push({name: country['name'], code: country['iso_3166_1']})})
         return countriesList
     }
 
