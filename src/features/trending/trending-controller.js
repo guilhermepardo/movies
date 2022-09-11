@@ -3,7 +3,7 @@ module.exports = class TrendingController {
         this.trendingService = trendingService
     }
 
-    async handle(req, res) {
+    async trending(req, res) {
         try {
             const response = await this.trendingService.trending()
             res.send(response)

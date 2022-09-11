@@ -1,13 +1,19 @@
-const genres = require('../store/genres')
+module.exports = class GenreHelper {
+    constructor(genresList) {
+        this.genresList = genresList
+    }
 
-module.exports = (movieGenres) => {
-    let convertedGenres = []
-    movieGenres.map(genre => {
-        genres.map(index => {
-            if (index.id === genre) {
-                convertedGenres.push(index.name)
-            }
+    returnGenresList(movieGenres) {
+        let genresNames = []
+        movieGenres.map(genreNumber => {
+            this.genresList.map(genreIndex => {
+                const index = genreNumber.id ? genreNumber.id : genreNumber
+                if (genreIndex.id === index) {
+                    genresNames.push(genreIndex.name)
+                }
+            })
         })
-    })
-    return convertedGenres
+        return genresNames
+    }
+
 }
