@@ -1,11 +1,10 @@
 module.exports = class PopularController {
-    constructor(popularService) {
-        this.popularService = popularService
+    constructor(service) {
+        this.service = service
     }
-
     async popular(req, res) {
         try {
-            const response = await this.popularService.popular()
+            const response = await this.service.popular()
             res.send(response)
         } catch (error) {
             console.log('error :>>', error)

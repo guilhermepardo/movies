@@ -1,26 +1,16 @@
 module.exports = class TheatresService {
-    constructor(httpHandler, helper) {
+    constructor(httpHandler, urlBuilder, responsePattern) {
         this.httpHandler = httpHandler,
-        this.helper = helper
+        this.urlBuilder = urlBuilder
+        this.responsePattern = responsePattern
     }
 
     async current() {
         try {
             let list = []
-            const response = await this.httpHandler.get(this.helper.getTmdbFeatureUrlComposed('THEATRES'))
-            response.results.map(movie => {
-                list.push({
-                title: movie['title'],
-                originalTitle: movie['original_title'],
-                sinopsis: movie['overview'],
-                posterImage: this.helper.getTmdbImageUrlComposed(movie['poster_path']),
-                genres: this.helper.genreConversor(movie['genre_ids']),
-                release: movie['release_date'],
-                language: movie['original_language'],
-                adult: movie['adult'],
-                rating: movie['vote_average'],
-                popularity: movie['popularity']
-                })
+            const response = await this.httpHandler.get(this.urlBuilder.buildFeatureUrl('theatres'))
+            response.results.map(element => {
+                list.push(this.responsePattern.buildResponsePattern(element))
             })
             return list
         } catch (error) {
@@ -31,20 +21,9 @@ module.exports = class TheatresService {
     async upcoming() {
         try {
             let list = []
-            const response = await this.httpHandler.get(this.helper.getTmdbFeatureUrlComposed('THEATRES_UPCOMING'))
-            response.results.map(movie => {
-                list.push({
-                title: movie['title'],
-                originalTitle: movie['original_title'],
-                sinopsis: movie['overview'],
-                posterImage: this.helper.getTmdbImageUrlComposed(movie['poster_path']),
-                genres: this.helper.genreConversor(movie['genre_ids']),
-                release: movie['release_date'],
-                language: movie['original_language'],
-                adult: movie['adult'],
-                rating: movie['vote_average'],
-                popularity: movie['popularity']
-                })
+            const response = await this.httpHandler.get(this.urlBuilder.buildFeatureUrl('theatres_upcoming'))
+            response.results.map(element => {
+                list.push(this.responsePattern.buildResponsePattern(element))
             })
             return list
         } catch (error) {
