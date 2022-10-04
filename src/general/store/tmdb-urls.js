@@ -1,8 +1,11 @@
 module.exports = {
-    POPULAR: 'https://api.themoviedb.org/3/movie/popular',
-    TRENDING: 'https://api.themoviedb.org/3/trending/movie/day',
-    THEATRES: 'https://api.themoviedb.org/3/movie/now_playing',
-    THEATRES_UPCOMING: 'https://api.themoviedb.org/3/movie/upcoming',
-    DETAILS: 'https://api.themoviedb.org/3/movie',
-    IMAGES: 'https://image.tmdb.org/t/p/original'
+    BASE_URL: 'https://api.themoviedb.org/3',
+    POPULAR_ROUTE: '/movie/popular',
+    TRENDING_ROUTE: '/trending/movie/day',
+    THEATRES_ROUTE: '/movie/now_playing',
+    THEATRES_UPCOMING_ROUTE: '/movie/upcoming',
+    DETAILS_ROUTE: '/movie',
+    IMAGES_ROUTE: 'https://image.tmdb.org/t/p/original',
+    API_KEY_QUERY_STRING: '?api_key=',
+    API_KEY_VALUE: process.env.TMDB_V3_KEY
 }
