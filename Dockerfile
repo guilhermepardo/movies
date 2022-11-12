@@ -1,9 +1,9 @@
-FROM node:16.15.0
+FROM node:latest
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install --production
+RUN npm install --omit=dev
 
 CMD ["npm", "start"]
